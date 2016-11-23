@@ -38,9 +38,8 @@ jQuery(function() {
 function removeHyphens(element) {
     var softHyphen = jQuery("<div/>").html('&shy;').text();
 
-    var $element = jQuery(element);
-    var text = $element.text().replace(new RegExp(softHyphen, 'g'), '');
-    $element.text(text);
+    var text = element.innerHTML.replace(new RegExp(softHyphen, 'g'), '');
+    jQuery(element).html(text);
 }
 
 /**

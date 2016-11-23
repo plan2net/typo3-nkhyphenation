@@ -23,6 +23,8 @@
 
 namespace Netzkoenig\Nkhyphenation\Domain\Model;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * Contains a set of hyphenation patterns. The patterns are stored in a file,
  * but are also stored as serialized trie in the database, in order to make
@@ -106,7 +108,7 @@ class HyphenationPatterns
      * frontend for the tries.
      */
     protected function getCache() {
-        return $GLOBALS['typo3CacheManager']->getCache('nkhyphenation_cache');
+        return GeneralUtility::makeInstance('TYPO3\CMS\Core\Cache\CacheManager')->getCache('nkhyphenation_cache');
     }
     
     /**
@@ -427,7 +429,7 @@ class HyphenationPatterns
             switch ($this->patternfileformat) {
                 case 'hyphenatorjs':
                     $patternprovider = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-                            '\\Netzkoenig\\Nkhyphenation\\Utility\\HyphenatorJSPatternProvider',
+                            'Netzkoenig\Nkhyphenation\Utility\HyphenatorJSPatternProvider',
                             $patternfileContent
                     );
                     break;

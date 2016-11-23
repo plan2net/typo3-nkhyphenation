@@ -1,0 +1,13 @@
+{
+  "name": "netzkoenig/nkhyphenation",
+  "description": "Hyphenation",
+  "require": {
+  },
+  "type": "typo3-cms-extension",
+  "version": "2.0.0",
+  "autoload": {
+    "psr-4": {
+      "Netzkoenig\\Nkhyphenation\\": "Classes"
+    }
+  }
+}
