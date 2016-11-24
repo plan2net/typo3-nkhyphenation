@@ -532,7 +532,9 @@ class HyphenationPatterns
             // entities for all characters outside the range of 7 bit ASCII.
             // Look here for details: https://stackoverflow.com/questions/11309194/php-domdocument-failing-to-handle-utf-8-characters
             $asciiText = mb_convert_encoding($text, 'HTML-ENTITIES', 'UTF-8');
-            
+
+            libxml_use_internal_errors(true); // prevent possible warnings
+
             $domDocument = new \DOMDocument();
             $domDocument->loadHTML('<div>' . $asciiText . '</div>');
             
