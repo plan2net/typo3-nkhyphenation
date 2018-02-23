@@ -31,9 +31,8 @@ if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations
 }
 
 // Register hook for stdWrap
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_content.php']['stdWrap'][] =
-        'EXT:nkhyphenation/Classes/Hooks/StdWrapHook.php:&Netzkoenig\\Nkhyphenation\\Hooks\\StdWrapHook';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_content.php']['stdWrap'][] = 'Netzkoenig\Nkhyphenation\Hooks\StdWrapHook';
 
 // Register hook for the pagerenderer to include js file
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-preProcess'][] =
-        'EXT:nkhyphenation/Classes/Hooks/PageRendererHook.php:&Netzkoenig\\Nkhyphenation\\Hooks\\PageRendererHook->addJavaScript';
+        'Netzkoenig\Nkhyphenation\Hooks\PageRendererHook->addJavaScript';
