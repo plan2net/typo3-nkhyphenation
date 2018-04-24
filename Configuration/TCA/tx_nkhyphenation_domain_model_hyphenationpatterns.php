@@ -39,8 +39,6 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('nkhyphenation') . 'Configuration/Tca/hyphenationpatterns.php',
-        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('nkhyphenation') . 'Resources/Public/Icons/hyphenationpatterns.png',
         'searchFields' => 'uid,title',
     ],
     'columns' => [
