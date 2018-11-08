@@ -4,7 +4,7 @@
   "require": {
   },
   "type": "typo3-cms-extension",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "autoload": {
     "psr-4": {
       "Netzkoenig\\Nkhyphenation\\": "Classes"
