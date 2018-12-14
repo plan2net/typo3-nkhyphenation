@@ -83,13 +83,17 @@ class HyphenatorJSPatternProvider {
         $this->minCharactersBeforeFirstHyphen = $parsedInput['leftmin'];
         $this->minCharactersAfterLastHyphen = $parsedInput['rightmin'];
 
-        foreach ($parsedInput['patterns'] as $patternLength => $patterns) {
-            $patternLength = intval($patternLength);
-            $patternsWithLength = array();
-            preg_match_all('/.{' . $patternLength . '}/u', $patterns, $patternsWithLength);
-            
-            // Add the patterns to the pattern list
-            $this->patternList = array_merge($this->patternList, $patternsWithLength[0]);
+        if (is_array($parsedInput['patterns'])) {
+            $this->patternList = [[]];
+            foreach ($parsedInput['patterns'] as $patternLength => $patterns) {
+                $patternLength = (int)$patternLength;
+                $patternsWithLength = [];
+                preg_match_all('/.{' . $patternLength . '}/u', $patterns, $patternsWithLength);
+
+                // Add the patterns to the pattern list
+                $this->patternList[] = $patternsWithLength[0];
+            }
+            $this->patternList = array_merge(...$this->patternList);
         }
 
         // Default characters in Hyphenator.js are the ones matched by \w in JS
