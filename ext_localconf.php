@@ -3,7 +3,7 @@
  * Copyright notice
  * (c) 2013 Jost Baron <j.baron@netzkoenig.de>
  * All rights reserved
- * 
+ *
  * This file is part of the TYPO3 extension "nkhyphenation".
  *
  * The TYPO3 extension "nkhyphenation" is free software: you can redistribute
@@ -22,17 +22,17 @@
  ******************************************************************************/
 
 if (!defined('TYPO3_MODE')) {
-	die ('Access denied.');
+    die ('Access denied.');
 }
 
 // Register cache for the tries
 if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['nkhyphenation_cache'])) {
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['nkhyphenation_cache'] = array();
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['nkhyphenation_cache'] = [];
 }
 
 // Register hook for stdWrap
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_content.php']['stdWrap'][] = 'Netzkoenig\Nkhyphenation\Hooks\StdWrapHook';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_content.php']['stdWrap'][] = \Netzkoenig\Nkhyphenation\Hooks\StdWrapHook::class;
 
 // Register hook for the pagerenderer to include js file
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-preProcess'][] =
-        'Netzkoenig\Nkhyphenation\Hooks\PageRendererHook->addJavaScript';
+    \Netzkoenig\Nkhyphenation\Hooks\PageRendererHook::class . '->addJavaScript';

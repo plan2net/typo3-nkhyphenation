@@ -99,7 +99,7 @@ class HyphenationPatterns
     /**
      * Data from the pattern file that are not patterns, for example word
      * characters, leftmin and rightmin data.
-     * @type array
+     * @var array
      */
     protected $dataFromFile;
 
@@ -203,29 +203,20 @@ class HyphenationPatterns
     
     /**
      * 
-     * @param type $wordcharacters
-     * @return type
-     * @throws \Netzkoenig\Nkhyphenation\Exception\HyphenationException If the
+     * @param mixed $wordcharacters
+     * @return array
      * parameter is neither null, an array nor a string.
      */
     public function sanitizeWordCharacters($wordcharacters) {
-        
         if (is_array($wordcharacters)) {
             return $wordcharacters;
         }
-        else if (is_string($wordcharacters)) {
+
+        if (is_string($wordcharacters)) {
             return preg_split('//u', $wordcharacters, -1, PREG_SPLIT_NO_EMPTY);
         }
-        else if (is_null($wordcharacters)) {
-            return array();
-        }
-        else {
-            throw new \Netzkoenig\Nkhyphenation\Exception\HyphenationException(
-                    'The list of word characters must be a string or an array,'
-                    . ' but got \'' . gettype($wordcharacters) . '\' instead.',
-                    1384634628
-            );
-        }
+
+        return [];
     }
 
     /**
